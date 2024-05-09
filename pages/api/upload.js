@@ -2,12 +2,7 @@ import lighthouse from '@lighthouse-web3/sdk';
 import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
-import Cors from 'cors';
 
-// Initialize the cors middleware
-const cors = Cors({
-  methods: ['POST'],
-});
 
 // Helper method to wait for NodeJS to close the incoming stream
 function parseForm(req) {
@@ -30,10 +25,7 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  
   try {
-      // Run the cors middleware
-    await cors(req, res);
   
     const apiKey = process.env.LIGHTHOUSE_API_KEY;
   
