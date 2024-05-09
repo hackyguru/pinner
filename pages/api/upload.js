@@ -7,7 +7,7 @@ import path from 'path';
 // Helper method to wait for NodeJS to close the incoming stream
 function parseForm(req) {
   return new Promise((resolve, reject) => {
-    const form = new formidable.IncomingForm();
+    const form = formidable({});
     form.parse(req, (err, fields, files) => {
       if (err) {
         reject(err);
