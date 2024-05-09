@@ -5,7 +5,7 @@ import path from 'path';
 
 
 // Helper method to wait for NodeJS to close the incoming stream
-function parseForm(req) {
+async function parseForm(req) {
   return new Promise((resolve, reject) => {
     const form = formidable({});
     form.parse(req, (err, fields, files) => {
@@ -33,6 +33,7 @@ export default async function handler(req, res) {
       try {
         const { files } = await parseForm(req);
         const uploadedFiles = files.files.map((file) => file.filepath);
+        console.log("uploaded files",uploadedFiles)
         const uploadResponse = await lighthouse.upload(uploadedFiles, apiKey, {
           uploadDirectory: true,
         });
