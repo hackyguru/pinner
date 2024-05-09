@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         const { files } = await parseForm(req);
         const uploadedFiles = files.files.map((file) => file.filepath);
         console.log("uploaded files",uploadedFiles)
-        const uploadResponse = await lighthouse.upload(uploadedFiles, apiKey, {
+        const uploadResponse = await lighthouse.upload(uploadedFiles[0], apiKey, {
           uploadDirectory: true,
         });
         const cid = uploadResponse.data.Hash;
